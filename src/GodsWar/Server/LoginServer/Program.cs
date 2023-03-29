@@ -1,11 +1,11 @@
-﻿using System;
+﻿using LoginServer.Definitions;
+using LoginServer.Utility;
+using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Net;
 using System.Net.Sockets;
+using System.IO;
 using System.Threading;
-using LoginServer.Definitions;
-using LoginServer.Utility;
 
 namespace LoginServer
 {
@@ -123,14 +123,6 @@ namespace LoginServer
             while (true)
             {
                 Thread.Sleep(100);
-                /*foreach (KeyValuePair<int, Systems.SRX_Serverinfo> SSI in Systems.GSList)
-                {
-                    if (SSI.Value.status != 0 && SSI.Value.lastPing.AddMinutes(5) < DateTime.Now) // server unavailable
-                    {
-                        SSI.Value.status = 0;
-                        LogConsole.Show("Server: {0}:({1}) has timed out, status changed to check", SSI.Value.id, SSI.Value.name);
-                    }
-                }*/
             }
             #endregion
         }

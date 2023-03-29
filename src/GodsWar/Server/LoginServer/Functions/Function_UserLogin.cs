@@ -1,4 +1,6 @@
-﻿using System;
+﻿using LoginServer.Definitions;
+using LoginServer.Network;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -41,10 +43,47 @@ namespace LoginServer
             return resp;
         }
 
+        public static bool JudgeValidStr(string name, string password)
+        {
+            //Construir mensaje de retorno de inicio de sesión
+            MSG_LOGIN_RETURN_INFO Login_info = new MSG_LOGIN_RETURN_INFO();
+            Login_info.Head.usSize = 0;
+            Login_info.Head.usType = (ushort)OpCodes._MSG_LOGIN_RETURN_INFO;
+
+            //Límite de longitud
+            /*if (name.Length > MAX_ACCOUNT_SIZE || password.Length > MAX_ACCOUNT_SIZE)
+            {
+                Login_info.ucInfo = 0;
+                //SEND
+                return false;
+            }*/
+
+            //Limite de cuenta
+            /*
+             * FALTA VALIDAR CHAR TEXTO
+             * SEND
+             * */
+            return true;
+        }
+
+        public static void CompleteLogin(Client client)
+        {
+            MSG_LOGIN_RETURN_INFO Login_info = new MSG_LOGIN_RETURN_INFO();
+            Login_info.Head.usSize = 0;
+            Login_info.Head.usType = (ushort)OpCodes._MSG_LOGIN_RETURN_INFO;
+            Login_info.ucInfo = 0x01;
+            client.SendC(Login_info.end());
+        }
+
         public static byte[] UserFail(byte _code)
         {
+            MSG_LOGIN_RETURN_INFO Login_info = new MSG_LOGIN_RETURN_INFO();
+
+            Login_info.Head.usSize = 0;
+            Login_info.Head.usType = (ushort)OpCodes._MSG_LOGIN_RETURN_INFO;
+
             PacketWriter pack = new PacketWriter();
-            pack.Create(0x03);
+            pack.Create((ushort)OpCodes._MSG_LOGIN_RETURN_INFO);
             pack.Byte(0x00);
             pack.Byte(_code);
             return pack.GetBytes();

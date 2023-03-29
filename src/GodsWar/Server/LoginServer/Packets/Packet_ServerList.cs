@@ -1,9 +1,22 @@
-﻿namespace LoginServer
+﻿using LoginServer.Definitions;
+namespace LoginServer
 {
     public partial class Systems
     {
         public static byte[] ServerListPacket(int cliVersion)
         {
+            PacketWriter pack = new PacketWriter();
+            pack.Create((ushort)OpCodes._MSG_LOGIN_RETURN_INFO);
+            /*
+             * 0: el ID no está registrado; 
+             * 1: el inicio de sesión es exitoso; 
+             * 2: inicio de sesión repetido; 
+             * 3: error de contraseña; 
+             * 4: error de versión 
+             */
+
+
+
             byte[] datasend = new byte[] {
             0x06, // Packet Header?
             0x00, // unk
