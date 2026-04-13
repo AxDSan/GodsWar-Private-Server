@@ -1,6 +1,6 @@
 # Project Discontinued
 > As of June 30th 2022 GodsWar was officially shutdown, this means that this project is now discontinued.
-> Thanks to everyone who was interested and helped, especially to [@CarlosX](https://github.com/CarlosX) main developer of the current GW private Server code base.
+> Thanks to everyone who was interested and helped, especially to [@CarlosX](https://github.com/CarlosX) lead developer of the current GW private Server code base.
 ___
 
 GodsWar Private Server (War of Gods)
